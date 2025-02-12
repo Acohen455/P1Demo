@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 
+
 @SpringBootApplication
 @EntityScan("com.revature.models") //Tells spring to scan this package for DB entities
 @ComponentScan("com.revature") //Tells spring to scan this package for beans
