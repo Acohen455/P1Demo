@@ -1,6 +1,7 @@
 package com.revature.services;
 
 import com.revature.DAOs.UserDAO;
+import com.revature.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,16 @@ public class AuthService {
         //Spring will create an instantiation of this DAO for us
     }
 
-    
+    //This method will take a User object and send it to the DAO
+    //It will also return the inserted User to the Controller
+    public User registerUser(User user){
+
+        //TODO: input validation
+
+        //We use the save() method to insert data into the DB
+        //save() is one of the methods we inherited from JpaRepository
+        return userDAO.save(user); //save() returns the inserted data. Convenient!
+
+    }
 
 }
