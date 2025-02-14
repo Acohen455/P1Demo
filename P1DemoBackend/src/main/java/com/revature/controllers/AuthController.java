@@ -19,7 +19,9 @@ public class AuthController {
     @PostMapping("/register") //Requests ending in /auth/register will invoke this method
     public ResponseEntity<?> registerUser(@RequestBody User user){
 
-        //TODO: actually implement this
+        //Send the User data to the service (which will send it to the DAO)
+
+        //Get the returned user object and send it back in the response
 
         return ResponseEntity.ok(user);
         //.ok() sends a 200 OK status code and allows us to send a response body
