@@ -29,7 +29,7 @@ public class AuthController {
         //you can do a status code and use .build() on the responseentity if you dont need to return anything
         //you can also use .status(n).body() or .build()
         //.ok() sends a 200 OK status code and allows us to send a response body
-        return ResponseEntity.ok("User registered in theory");
+        return ResponseEntity.ok(user);
 
     }
 
