@@ -3,6 +3,12 @@ package com.revature.models;
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
+//The model is just the representation of the data we pass between things
+//This isnt a layer, this is just data representation
+//In some languages, model and business layer are combined into a single layer
+//Here we're seperating them out
+
+
 @Component //1 of 4 stereotype annotations (make a class a bean)
 @Entity //This makes the class a DB entity
 @Table(name = "users") //This annotation lets us specify the name of the DB table

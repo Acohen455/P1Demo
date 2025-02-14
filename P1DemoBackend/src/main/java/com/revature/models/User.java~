@@ -3,6 +3,10 @@ package com.revature.models;
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
+//The model is just the representation of the data we pass between things
+//This isnt a layer, this is just data representation
+
+
 @Component //1 of 4 stereotype annotations (make a class a bean)
 @Entity //This makes the class a DB entity
 @Table(name = "users") //This annotation lets us specify the name of the DB table
@@ -19,7 +23,7 @@ public class User {
 
     private String password;
 
-    private String role;
+    private String role = "user"; //we can set a default role this way
 
     //boilerplate-----------------------------------------------
 
