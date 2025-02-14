@@ -5,6 +5,7 @@ import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Login } from './Components/LoginRegister/Login'
 import 'bootstrap/dist/css/bootstrap.css'
+//^THIS IS A REQUIRED MANUAL IMPORT FOR BOOTSTRAP TO WORK!!!
 
 function App() {
 
