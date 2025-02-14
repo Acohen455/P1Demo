@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EntityScan("com.revature.models") //Tells spring to scan this package for DB entities
 @ComponentScan("com.revature") //Tells spring to scan this package for beans
-@EnableJpaRepositories("com.revature.DAOs") //this enables JPA repositories, which our DAO extends
+@EnableJpaRepositories("com.revature.DAOs") //this enables JPA repositories, which our DAO extends -- without this our DAOs cant access their dependency
 public class P1DemoBackendApplication {
 
 
