@@ -1,3 +1,5 @@
+import { Container, Form } from "react-bootstrap"
+
 export const Register:React.FC = () => {
 
 
