@@ -21,9 +21,9 @@ public class AuthController {
 
         //TODO: actually implement this
 
-        return ResponseEntity.ok("User registered (but not really)");
+        return ResponseEntity.ok(user);
         //.ok() sends a 200 OK status code and allows us to send a response body
-        
+
     }
 
 }
