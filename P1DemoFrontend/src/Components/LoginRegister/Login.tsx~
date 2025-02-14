@@ -1,9 +1,12 @@
 
 //standard react component component
+import {Button, Container, Form} from "react-bootstrap";
+
 export const Login:React.FC = () => {
 
 
-
+    //we can use useNavigate hook to navigate between components programatically
+    const navigate = useNavigate();
 
     return(
         /*Bootstrap gives us this Container element that does some default padding and centering*/

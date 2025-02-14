@@ -4,7 +4,6 @@ export const Register:React.FC = () => {
 
 
     return(
-
         <Container>
             <div>
                 <h1>New here? Create an Account for free!</h1>
