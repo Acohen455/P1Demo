@@ -29,7 +29,7 @@ public class AuthController {
     //Insert a new user (POST request)
     //http://localhost:8080/auth/register
     @PostMapping("/register") //requests ending in /auth/register invoke this method
-    public ResponseEntity<?> registerUser(@RequestBody User user) { //requestbody retrieves data from the body of the request, here expecting user
+    public ResponseEntity<User> registerUser(@RequestBody User user) { //requestbody retrieves data from the body of the request, here expecting user
 
 
         //This sends the user data to the service which sends it to the DAO and returns the user from the db
@@ -38,7 +38,8 @@ public class AuthController {
         //you can do a status code and use .build() on the responseentity if you dont need to return anything
         //you can also use .status(n).body() or .build()
         //.ok() sends a 200 OK status code and allows us to send a response body
-        return ResponseEntity.ok(user);
+        //we're going to send the user data back to the client instead of a status code
+        return ResponseEntity.ok(returnedUser);
 
     }
 

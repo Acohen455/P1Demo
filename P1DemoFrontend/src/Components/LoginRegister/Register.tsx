@@ -1,6 +1,6 @@
 import {Button, Container, Form} from "react-bootstrap";
-import {useNavigate} from "react-router-dom";
-import * as axios from "axios";
+import axios from "axios";
+
 
 
 export const Register:React.FC = () => {
@@ -13,11 +13,14 @@ export const Register:React.FC = () => {
     const register = async () => {
         //POST request with hardcoded user info
         //axios takes the URL we're going to send to, the data we're sending (if any), and the config
-        const response = await axios.post("http://localhost:8080/auth/register",
-                                        {username:"reactUser", password:"password"});
-    }.then(() => {
-        alert("Registration successful!");
-    })
+        try {
+            const response = await axios.post("http://localhost:8080/auth/register",
+                {username:"reactUser", password:"password"});
+        } catch {
+            alert("Registration Failed");
+        }
+
+    }
 
 
     return(
