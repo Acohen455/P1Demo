@@ -3,7 +3,7 @@ import { useState } from 'react'
 import './App.css'
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Login} from "./Components/LoginRegister/Login.tsx";
-//this imports the bootstrap defaults
+//required manual import for bootstrap to work
 import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
