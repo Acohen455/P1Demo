@@ -4,15 +4,13 @@ import com.revature.models.User;
 import com.revature.services.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 //AuthController? Think AUTHentication/AUTHorization
 //I like to put account registration and login functionality here
 @RestController //Combines @Controller and @ResponseBody (makes a class a bean, and lets us send JSON responses)
 @RequestMapping("/auth") //Requests ending in /auth will go to this Controller
+@CrossOrigin //This annotation will allow requests from anywhere (like our React app)
 public class AuthController {
 
     //autowire the AuthService to use its methods
