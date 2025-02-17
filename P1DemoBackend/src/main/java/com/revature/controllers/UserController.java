@@ -25,6 +25,8 @@ public class UserController {
     //return all users to the client
     public ResponseEntity<List<User>> getAllUsers() {
         //lets return the users in a one liner
+        //the parameter to .ok() is the RESPONSE BODY
+        //AKA the data we're sending back
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
