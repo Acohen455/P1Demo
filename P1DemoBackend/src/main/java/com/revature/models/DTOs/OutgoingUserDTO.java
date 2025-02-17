@@ -24,4 +24,41 @@ public class OutgoingUserDTO {
         this.role = role;
     }
 
+
+    //getters and setters
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    //toString
+
+    @Override
+    public String toString() {
+        return "OutgoingUserDTO{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", role='" + role + '\'' +
+                '}';
+    }
 }
