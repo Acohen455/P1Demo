@@ -13,7 +13,7 @@ spring.datasource.password=password
 spring.jpa.show-sql=true
 
 # Specify what DB schema we're using
-spring.jpa.properties.hibernate.default_schema=project1
+spring.jpa.properties.hibernate.default_schema=p1demo
 
 # Setting our DDL to "update", which will update the DB when changes happen our models
 spring.jpa.hibernate.ddl-auto=update

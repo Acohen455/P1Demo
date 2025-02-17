@@ -40,8 +40,6 @@ public class AuthService {
         //we use the save() method to insert data into the DB
         //save() is one of the methods inherited from JPARepository
         //this is part of why we use it, dont have to write this ourself
-
-        //save returns the user object -- save returns whatever is inserted into the database
         return userDao.save(user);
 
 
