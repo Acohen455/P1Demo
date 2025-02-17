@@ -1,11 +1,23 @@
 import { Button, Container, Form } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
+import {useEffect, useRef} from "react";
 
 export const Login:React.FC = () => {
 
     //we can use the useNavigate hook to navigate between components programatically
         //(no more manual URL changing)
     const navigate = useNavigate()
+
+    //using useref to grab focus
+    const usernameRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+
+        if (usernameRef.current){
+            usernameRef.current.focus()
+        }
+
+    }, []);
 
     return(
         /*Bootstrap gives us this Container element that does some default padding and centering*/
@@ -19,6 +31,8 @@ export const Login:React.FC = () => {
                         type="text"
                         placeholder="username"
                         name="username"
+                        ref={usernameRef} //attach our usernameRef here
+                        //this is how our useref knows what to focus
                     />
                 </div>
 
