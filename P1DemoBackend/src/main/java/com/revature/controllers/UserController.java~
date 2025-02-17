@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import com.revature.models.DTOs.OutgoingUserDTO;
 import com.revature.models.User;
 import com.revature.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +19,13 @@ public class UserController {
 
     @Autowired
     public UserController(UserService userService) {
+
         this.userService = userService;
     }
 
 
     //return all users to the client
-    public ResponseEntity<List<User>> getAllUsers() {
+    public ResponseEntity<List<OutgoingUserDTO>> getAllUsers() {
         //lets return the users in a one liner
         //the parameter to .ok() is the RESPONSE BODY
         //AKA the data we're sending back
