@@ -8,6 +8,8 @@ package com.revature.models.DTOs;
 //Check the videogame DTOs for more interesting uses of DTOs
 
 
+import com.revature.models.User;
+
 public class OutgoingUserDTO {
 
     private int userId;
@@ -16,6 +18,15 @@ public class OutgoingUserDTO {
 
     public OutgoingUserDTO() {
 
+    }
+
+    //this works instead of running these manually when initializing the userDTO
+    //also much cleaner
+    //see this in use in get all users in UserService
+    public OutgoingUserDTO(User user) {
+        this.userId = user.getUserId();
+        this.username = user.getUsername();
+        this.role = user.getRole();
     }
 
     public OutgoingUserDTO(int userId, String username, String role) {

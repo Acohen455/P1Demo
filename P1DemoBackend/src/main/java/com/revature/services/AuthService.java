@@ -8,6 +8,7 @@ package com.revature.services;
 
 
 import com.revature.DAOs.UserDAO;
+import com.revature.models.DTOs.OutgoingUserDTO;
 import com.revature.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,15 +35,28 @@ public class AuthService {
 
     //This method will take a user object and send it to the DAO
     //It will also return the inserted User to the Controller
-    public User registerUser(User user) {
-        //TODO: implement input validation
+    public OutgoingUserDTO registerUser(User user) {
+        //TODO: implement input validation -- we'll do this on tuesday
 
         //we use the save() method to insert data into the DB
         //save() is one of the methods inherited from JPARepository
         //this is part of why we use it, dont have to write this ourself
 
         //save returns the user object -- save returns whatever is inserted into the database
-        return userDao.save(user);
+        User returnedUser = userDao.save(user);
+
+
+
+        //We need to convert the user to a userDTO before sending to the client
+        //We don't want to send the password back to the client
+        OutgoingUserDTO outUserDTO = new OutgoingUserDTO(
+                returnedUser.getUserId(),
+                returnedUser.getUsername(),
+                returnedUser.getRole()
+        );
+
+        //now we can return the secure DTO
+        return outUserDTO;
 
 
     };
