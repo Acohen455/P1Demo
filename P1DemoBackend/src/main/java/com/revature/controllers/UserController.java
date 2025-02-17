@@ -5,6 +5,7 @@ import com.revature.models.User;
 import com.revature.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController //makes this class a bean and turns http response bodies into JSON
 @RequestMapping("/users") //requests ending in /users will go here
+@CrossOrigin
 public class UserController {
 
     //Autowire the userservice to use its methods
