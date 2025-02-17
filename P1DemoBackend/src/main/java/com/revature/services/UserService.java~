@@ -42,7 +42,6 @@ public class UserService {
                 }
 
                 return userDTOs;
-                //the method used to just be return userDAO.findAll();
             }
 
 
