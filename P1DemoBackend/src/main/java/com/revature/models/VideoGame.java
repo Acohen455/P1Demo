@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Entity
 @Table(name = "videogames")
-public class VideoGames {
+public class VideoGame {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,10 +33,10 @@ public class VideoGames {
 
     //constructors
 
-    public VideoGames() {
+    public VideoGame() {
     }
 
-    public VideoGames(int gameId, String title, String genre, User user) {
+    public VideoGame(int gameId, String title, String genre, User user) {
         this.gameId = gameId;
         this.title = title;
         this.genre = genre;
@@ -81,7 +81,7 @@ public class VideoGames {
 
     @java.lang.Override
     public java.lang.String toString() {
-        return "VideoGames{" +
+        return "VideoGame{" +
                 "gameId=" + gameId +
                 ", title='" + title + '\'' +
                 ", genre='" + genre + '\'' +

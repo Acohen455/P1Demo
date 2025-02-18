@@ -4,8 +4,7 @@ import axios from "axios";
 import {User} from "../../Interfaces/User.ts";
 
 
-class user {
-}
+
 
 export const UserTable: React.FC = () => {
 
@@ -45,6 +44,10 @@ export const UserTable: React.FC = () => {
     //function that does a fake update delete (wanna show how to extract data from a map)
     const updateUser = (user:User) => {
         alert("User " + user.userId + " has been ostensibly updated");
+
+
+        //TODO: Cache data so we dont have to constantly call the database
+
     }
 
 
