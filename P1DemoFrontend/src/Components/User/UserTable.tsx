@@ -1,4 +1,4 @@
-import {Container, Table} from "react-bootstrap";
+import {Button, Container, Table} from "react-bootstrap";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {User} from "../../Interfaces/User.ts";
@@ -38,22 +38,27 @@ export const UserTable: React.FC = () => {
     }
 
     return(
-        <Container>
+        <Container className="d-flex flex-column align-items-center mt-3">
             <h3>Users:</h3>
-            <Table className="table-dark table-hover table-striped">
+            <Table className="table-dark table-hover table-striped w-50">
                 <thead>
                 <tr>
                     <th>User ID</th>
                     <th>Username</th>
                     <th>Role</th>
+                    <th>Options</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody className="table-secondary">
                     {users.map((user:User) => ( //() arrow functions have an implicit return, {} have an explicit return
                         <tr key={user.userId}>
                             <td>{user.userId}</td>
                             <td>{user.username}</td>
                             <td>{user.role}</td>
+                            <td>
+                                <Button variant={"outline-primary"}>Promote</Button>
+                                <Button variant="outline-danger">Fire</Button>
+                            </td>
                         </tr>
                     ))} {/* we are returning something implicit from the arrow function, so we use () for the arrow function*/}
                 </tbody>
