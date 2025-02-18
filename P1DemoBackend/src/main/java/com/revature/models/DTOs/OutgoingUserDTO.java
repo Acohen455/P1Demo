@@ -7,6 +7,9 @@ package com.revature.models.DTOs;
 //Using a DTO just modularizes data further
 //Check the videogame DTOs for more interesting uses of DTOs
 
+//Because DTOs don't ever hit the database and we just use them to transfer data
+//We dont need to wire them -- spring boot doesnt need to do anything with these
+//DTOs are always going to be an intermediary -- we wont be injecting this as a dependency
 
 import com.revature.models.User;
 
