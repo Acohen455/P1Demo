@@ -4,6 +4,9 @@ import axios from "axios";
 import {User} from "../../Interfaces/User.ts";
 
 
+class user {
+}
+
 export const UserTable: React.FC = () => {
 
     //state object to store the user array
@@ -35,7 +38,15 @@ export const UserTable: React.FC = () => {
         alert("Something went wrong trying to fetch users");
     }
 
+
+
     }
+
+    //function that does a fake update delete (wanna show how to extract data from a map)
+    const updateUser = (user:User) => {
+        alert("User " + user.userId + " has been ostensibly updated");
+    }
+
 
     return(
         <Container className="d-flex flex-column align-items-center mt-3">
@@ -56,7 +67,7 @@ export const UserTable: React.FC = () => {
                             <td>{user.username}</td>
                             <td>{user.role}</td>
                             <td>
-                                <Button variant={"outline-primary"}>Promote</Button>
+                                <Button variant={"outline-primary"} onClick={() =>updateUser(user)}>Promote</Button>
                                 <Button variant="outline-danger">Fire</Button>
                             </td>
                         </tr>
