@@ -28,7 +28,7 @@ public class VideoGameController {
     public ResponseEntity<VideoGame> insertGame(@RequestBody IncomingGameDTO gameDTO) {
 
         //send the DTO to the service and returnt he VideoGame object that comes back
-        return ResponseEntity.accepted().body(gameService.insertGame(gameDTO));
+        return ResponseEntity.accepted(gameService.insertGame(gameDTO));
     }
 
 }
