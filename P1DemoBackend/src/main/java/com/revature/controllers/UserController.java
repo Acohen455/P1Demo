@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import com.revature.aspects.AdminOnly;
 import com.revature.models.DTOs.OutgoingUserDTO;
 import com.revature.models.User;
 import com.revature.services.UserService;
@@ -29,6 +30,7 @@ public class UserController {
 
     //return all users to the client
     @GetMapping
+    @AdminOnly
     public ResponseEntity<List<OutgoingUserDTO>> getAllUsers() {
         //lets return the users in a one liner
         //the parameter to .ok() is the RESPONSE BODY
