@@ -8,6 +8,7 @@ package com.revature.services;
 
 
 import com.revature.DAOs.UserDAO;
+import com.revature.models.DTOs.LoginDTO;
 import com.revature.models.DTOs.OutgoingUserDTO;
 import com.revature.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,5 +61,48 @@ public class AuthService {
 
 
     };
+
+
+    //Login -- takes a LoginDTO and uses those fields to try to get a User from the DAO
+    public OutgoingUserDTO login(LoginDTO loginDTO) {
+
+
+        //input validation time!
+        //check for null or if it is an empty string or whitespace only
+        if (loginDTO.getUsername() == null || loginDTO.getUsername().isBlank()){
+            //can throw a custom exception here if you want
+            throw new IllegalArgumentException("Username cannot be null or whitespace only");
+        }
+
+        //same input validation but for password
+        if (loginDTO.getPassword() == null || loginDTO.getPassword().isBlank()){
+            //can throw a custom exception here if you want
+            throw new IllegalArgumentException("Password cannot be empty");
+        }
+
+        //TODO: could do more checks
+
+        //Now we know the username and password are good...
+        //Try to get a User from the DAO
+        //.orElse lets us do something if the optional returns empty
+        User returnedUser = userDao.findByUsernameAndPassword(loginDTO.getUsername(),
+                                                                loginDTO.getPassword()).orElse(null);
+
+
+        //orElse(null) is a convenient way to extract data (or null value) from an Optional
+        //We could also use orElseThrow() to throw an exception outright instead of returning null
+
+        //If no user is found (if returnedUser is null) throw an exception
+        if (returnedUser == null) {
+            throw new IllegalArgumentException("User not found");
+        }
+
+        //If we get here, login was successful so return a user to the controller
+        return new OutgoingUserDTO(returnedUser); //using our convenient constructor
+
+
+    };
+
+
 
 }
