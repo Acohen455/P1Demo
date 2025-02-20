@@ -2,6 +2,8 @@
 //standard react component component
 import {Button, Container, Form} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
+import {useState} from "react";
+import axios from "axios";
 
 export const Login:React.FC = () => {
 
@@ -10,6 +12,56 @@ export const Login:React.FC = () => {
     //variable stores the hook
     //we can now use the hook in our app
     const navigate = useNavigate();
+
+
+
+
+    //Defining a state object to store the user's info
+    const[loginCreds, setLoginCreds] = useState({
+        username: "",
+        password: ""
+    }) // could have defined an interface for this, but we didnt
+
+
+    //Function to store user inputs
+    //we'll have to bind this to the input box
+    const storeValues = (event:React.ChangeEvent<HTMLInputElement>) => {
+        //store the name (ie. the name of the box) and value of the inputs for ease of use below
+        const name = event.target.name; //name is an attribute we set on the target boxes
+        const value = event.target.value; //value is the actual value in the input at the time
+
+
+        //this says:
+        //"Take whatever input was changed, and set the matching state field to the value of that input
+        //the ... is destructuring
+        //setLoginCreds is the mutator
+        //pass in the state value
+        //destructure logincreds so we can access each value individually
+        //then based on the name of the value changed, set that value
+        //[name] can be EITHER username or password. This ugly code lends flexibility
+        //we destructure the logincreds object to get the name of the user and password fields
+        //this syntax is less necessary with only 2 fields, but much more useful with more fields
+
+        //this is the best way to do it
+        //get used to the spread operator
+        setLoginCreds((loginCreds) => ({...loginCreds, [name]:value}));
+
+        //Function to make the actual login request
+        //navigates to /users if a manager logged in, and /games if a user logged in
+        const login = async () => {
+            //TODO: Make sure the username/password are present before proceeding
+
+            try {
+                //axios call for the login request
+                const response = await axios.post("http://localhost:8080/auth/login", loginCreds);
+                //if the Catch doesnt run, login was successful -- we then need to save data to the global store
+                //after this we switch rendered views
+            } catch {
+                alert("Login Failed");
+            }
+
+        }
+    }
 
     return(
         /*Bootstrap gives us this Container element that does some default padding and centering*/
@@ -23,6 +75,7 @@ export const Login:React.FC = () => {
                     type="text"
                     placeholder="username"
                     name="username"
+                    onChange={storeValues}
                 />
             </div>
 
@@ -31,6 +84,7 @@ export const Login:React.FC = () => {
                     type="password"
                     placeholder="password"
                     name="password"
+                    onChange={storeValues}
                 />
             </div>
 
