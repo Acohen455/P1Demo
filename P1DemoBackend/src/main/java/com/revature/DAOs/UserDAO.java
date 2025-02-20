@@ -4,6 +4,8 @@ import com.revature.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 //Extending JpaRepository gives us access to a bunch of basic CRUD methods. We don't have to write them!
     //This includes find all, find by id, insert, update, delete
 
@@ -14,5 +16,9 @@ import org.springframework.stereotype.Repository;
 public interface UserDAO extends JpaRepository<User, Integer> {
 
 
+    //for login, we can check if an inputted user/pass matches a db record
+    //if it returns null, the user doesnt exist or password is wrong and login fails
+    //If it returns a User object, the user exists and login succeeds
+    public Optional<User> findByUsernameAndPassword(String username, String password);
 
 }
