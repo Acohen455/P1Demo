@@ -86,8 +86,8 @@ public class AuthController {
          */
 
 
-
-
+        //Return the User info to the client
+        return ResponseEntity.ok(loggedInUser);
     }
 
 
