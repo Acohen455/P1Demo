@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController //makes this class a bean and turns http response bodies into JSON
 @RequestMapping("/users") //requests ending in /users will go here
-@CrossOrigin
+@CrossOrigin(value = "http://localhost:5173", allowCredentials = "true")
 public class UserController {
 
     //Autowire the userservice to use its methods

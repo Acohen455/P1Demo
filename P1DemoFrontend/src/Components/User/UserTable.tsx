@@ -23,7 +23,10 @@ export const UserTable: React.FC = () => {
     const getAllUsers = async () => {
 
     try{
-        const response = await axios.get("http://localhost:8080/users");
+        const response = await axios.get("http://localhost:8080/users",
+            {withCredentials: true}); //We need withCredentials if the request requires specific session info
+        //ie. existence of a session, role stored in the session, etc.
+        //withcredentials passes the cookie data to the backend
 
         //TODO: error throwing code
 

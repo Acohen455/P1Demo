@@ -4,6 +4,7 @@ import {Button, Container, Form} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import axios from "axios";
+import {store} from "../../GlobalData/store.ts";
 
 export const Login:React.FC = () => {
 
@@ -46,21 +47,46 @@ export const Login:React.FC = () => {
         //get used to the spread operator
         setLoginCreds((loginCreds) => ({...loginCreds, [name]:value}));
 
-        //Function to make the actual login request
-        //navigates to /users if a manager logged in, and /games if a user logged in
-        const login = async () => {
-            //TODO: Make sure the username/password are present before proceeding
 
-            try {
-                //axios call for the login request
-                const response = await axios.post("http://localhost:8080/auth/login", loginCreds);
-                //if the Catch doesnt run, login was successful -- we then need to save data to the global store
-                //after this we switch rendered views
-            } catch {
-                alert("Login Failed");
+
+    }
+
+    //Function to make the actual login request
+    //navigates to /users if a manager logged in, and /games if a user logged in
+    const login = async () => {
+        //TODO: Make sure the username/password are present before proceeding
+
+        try {
+            //axios call for the login request
+            //axios requests take a third parameter: withcredentials
+            const response = await axios.post("http://localhost:8080/auth/login", loginCreds, {withCredentials: true});
+            //withCredentials lets us interact with sessions on the backend
+            //every request that depends ont he user being logged in, being an admin, etc. needs this
+            //basically passes the session cookie along
+
+
+            //if the Catch doesnt run, login was successful -- we then need to save data to the global store
+            //after this we switch rendered views
+            store.loggedInUser = response.data; //this is our logged in user data from the backend -- ie. the http response body
+            //axios turns the response body into JSON for us, without us doing anything extra
+
+            //greet the user with this newly stored data
+            alert("Welcome, " + store.loggedInUser.username + "!");
+
+            //users will get sent to the users component if theyre an "admin"
+            //users will get sent to the game component if theyre a "user"
+            if (store.loggedInUser.role === "admin") {
+                navigate("/users");
+            } else {
+                navigate("/games");
             }
 
+
+
+        } catch {
+            alert("Login Failed");
         }
+
     }
 
     return(
@@ -89,7 +115,7 @@ export const Login:React.FC = () => {
             </div>
 
 
-            <Button className="btn-success m-1">Login</Button>
+            <Button className="btn-success m-1" onClick={login}>Login</Button>
             <Button className="btn-dark" onClick={()=>navigate("/register")}>Register</Button>
         </Container>
     )

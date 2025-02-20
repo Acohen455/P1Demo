@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 //What annotations do we need?
 @RestController //combines @Controller and @ResponseBody (makes a class a bean, and lets us send JSON responses)
 @RequestMapping("/auth") //this indicates that HTTP requests to the listed address land on this controller
-@CrossOrigin
+@CrossOrigin(value = "http://localhost:5173", allowCredentials = "true") //we need specific crossorigin location if we need credentials
 public class AuthController {
 
     //autowire the auth service to use its methods

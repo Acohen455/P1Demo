@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/games")
-@CrossOrigin
+@CrossOrigin(value = "http://localhost:5173", allowCredentials = "true")
 public class VideoGameController {
 
     //autowire this

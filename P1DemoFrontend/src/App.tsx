@@ -6,6 +6,7 @@ import {Login} from "./Components/LoginRegister/Login.tsx";
 import 'bootstrap/dist/css/bootstrap.css';
 import {Register} from "./Components/LoginRegister/Register.tsx";
 import {UserTable} from "./Components/User/UserTable.tsx";
+import {GameTable} from "./Components/Games/GameTable.tsx";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
             <Route path="" element={<Login />} />
             <Route path="register" element ={<Register />} />
             <Route path="users" element={<UserTable />} />
+            <Route path="games" element={<GameTable />} />
         </Routes>
       </BrowserRouter>
     </>
