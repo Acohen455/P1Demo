@@ -93,8 +93,6 @@ public class AuthService {
         //We could also use orElseThrow() to throw an exception outright instead of returning null
 
         //If no user is found (if returnedUser is null) throw an exception
-        //we could customize it to say which is invalid
-        //that's a security risk though
         if (returnedUser == null) {
             throw new IllegalArgumentException("Invalid Username or Password");
         }
