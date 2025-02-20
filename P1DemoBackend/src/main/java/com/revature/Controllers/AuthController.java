@@ -76,6 +76,7 @@ public class AuthController {
          * Can be used to simplify our URLs!
          *      ex: use the stored userId in "findByXByUserId" methods instead of sending in path
          *          cleans up the URLS and secures them a bit more
+         *          also secures the URLs -- if it defaults to the users stored id, its more secure
          *
          *
          * We can set a session timeout as well in the application.properties
