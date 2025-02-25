@@ -23,8 +23,7 @@ public class AuthAspect {
     //This says
     //Invoked the login check before any method in the controllers package BESIDES the AuthController
     @Order(1)
-    @Before("within(com.revature.controllers.*)" +
-            "&& !within(com.revature.controllers.AuthController)")
+    @Before("within(com.revature.controllers.*) && !within(com.revature.controllers.AuthController)")
     public void checkLoggedIn(){
 
         //get access to the session (or lack thereof)
